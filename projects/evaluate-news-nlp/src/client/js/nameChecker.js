@@ -13,4 +13,6 @@ function checkForName(inputText) {
     }
 }
 
-export { checkForName }
+function onBlur(){}
+
+export { checkForName, onBlur }
