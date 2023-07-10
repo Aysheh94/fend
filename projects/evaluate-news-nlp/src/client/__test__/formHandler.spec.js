@@ -1,18 +1,21 @@
-import { checkForName } from "../js/nameChecker"
+import { handleSubmit } from "../js/formHandler"
+import { polarityChecker } from "../js/formHandler"
+
 
 // The describe() function takes two arguments - a string description, and a test suite as a callback function.  
 // A test suite may contain one or more related tests    
-describe("Testing the checkForName function", () => {
+describe("Testing the submit functionality", () => {
 // The test() function has two arguments - a string description, and an actual test as a callback function.  
-test("Testing if checkForName is defined correctly", () => {
+test("Testing if handlesubmit is defined correctly", () => {
       // Define the input for the function, if any, in the form of variables/array
       // Define the expected output, if any, in the form of variables/array
       // The expect() function, in combination with a Jest matcher, is used to check if the function produces the expected output
       // The general syntax is `expect(myFunction(arg1, arg2, ...)).toEqual(expectedValue);`, where `toEqual()` is a matcher
-      expect(checkForName).toBeDefined();
+      expect(handleSubmit).toBeDefined();
 })
-test('checks if the input url is invalid', () => {
-      expect(checkForName('udacityy.')).toBe(false);
+test("Testing the type of the polarityChecker()", () => {
+    expect(typeof polarityChecker).toBe('function');
+
 })
 
 });

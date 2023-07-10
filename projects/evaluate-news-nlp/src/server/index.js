@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const mockAPIResponse = require('./mockAPI.js');
 const dotenv = require('dotenv');
+
 dotenv.config();
+
+const API_KEY = process.env.API_KEY;
 
 const app = express();
 
@@ -24,11 +27,46 @@ app.get('/', function (req, res) {
    // res.sendFile(path.resolve('src/client/views/index.html'))
 });
 
+//send api key to client side
+/*app.get('/get_data', (req, res) => {
+    res.send({ key: API_KEY });
+});*/
+
 // designates what port the app will listen to for incoming requests
-app.listen(8081, function () {
-    console.log('Example app listening on port 8081!');
+app.listen(3000, function () {
+    console.log('Example app listening on port 8080!');
 });
 
 app.get('/test', function (req, res) {
     res.send(mockAPIResponse);
 })
+
+// API
+const baseURL = 'https://api.meaningcloud.com/sentiment-2.1?'
+const apiKey = process.env.API_KEY
+//console.log(`Your API Key is ${process.env.API_KEY}`);
+let userInput = [] 
+
+
+// POST Route
+app.post('/api', async function(req, res) {
+    userInput = req.body.url;
+    console.log(`You entered: ${userInput}`);
+    const apiURL = `${baseURL}key=${apiKey}&url=${userInput}&lang=en`
+
+    const response = await fetch(apiURL)
+    const mcData = await response.json()
+    console.log(mcData)
+    res.send(mcData)
+    /** server sends only specified data to the client with below codes
+     * const projectData = {
+     *  score_tag : mcData.score_tag,
+     *  agreement : mcData.agreement,
+     *  subjectivity : mcData.subjectivity,
+     *  confidence : mcData.confidence,
+     *  irony : mcData.irony
+     * }
+     * res.send(projectData);
+     * */
+})
+
