@@ -20,15 +20,15 @@ The news article with NLP project is developed using a client-server architectur
 - `npm install`
 - Setting up the API(MeaningCloud API) and create a request.
 - Parse the response body to dynamically fill content on the page.
-- Test that the server and form submission work, making sure to also handle error responses if the user input does not match API requirements. 
-- Go back to the web pack config and add the setup for service workers.  
-- Test that the site is now available even when you stop your local server 
+- Test that the server and form submission work, making sure to also handle error responses if the user input does not match API requirements.
+- Go back to the web pack config and add the setup for service workers. 
+- Test that the site is now available even when you stop your local server
 
 ## Running The Project
 After navigating to the folder that includes the project, follow these steps:
 1. `npm install`
 2. `npm run build-prod`
 3. `npm start`
-4. Access the url http://localhost:8081
+4. Access the url http://localhost:3000
 5. In the textbox, enter the url of the page with the text to be analysed.
-6.`npm run test` to make testing with jest
+6. `npm run test` to make testing with jest
